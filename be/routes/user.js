@@ -10,7 +10,7 @@ const setresponseHeader  = (req,res,next)=>{
     next();
 }
 router.use(setresponseHeader);
-router.get("/isSignIn",user_controller.isSignIn);
+router.get("/isSignIn",usreSigninAuth,user_controller.isSignIn);
 router.get("/info",usreSigninAuth,user_controller.info);
 // router.post("/exit",user_controller.exit);
 // router.post("/check",user_controller.check);

@@ -2,14 +2,25 @@
 const isSignIn = () => {
     return $.ajax({
         url: '/api/v1/user/isSignIn',
-        success: results => results
+        data:{
+            token:localStorage.getItem("token")
+        },
+        success: (results)=>{
+            return results;
+        }
     })
 }
 
 const info = () => {
     return $.ajax({
         url: '/api/v1/user/info',
-        success: results => results
+        data:{
+            token:localStorage.getItem("token")
+        },
+        success: (results)=>{
+            console.log(results);
+            return results;
+        }
     })
 }
 

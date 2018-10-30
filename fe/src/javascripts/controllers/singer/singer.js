@@ -4,6 +4,8 @@ import singer_tempalte from "../../views/singer/singer.html";
 import singer_models from "../../models/singer/singer";
 import add_template from "../../views/singer/addSinger.html";
 import update_template from "../../views/singer/updateSinger.html";
+
+//列表显示
 const list = async (req,res)=>{
     //将pageNo和pageSize传到后台
     // pageNo
@@ -16,7 +18,6 @@ const list = async (req,res)=>{
         data: _dataList.data
     })
    res.render(html);
-   
    ListbindEvent(_dataList.data.pageInfo);
 }
 
@@ -32,12 +33,21 @@ const ListbindEvent = (pageInfo)=>{
         let keywords = $("#keywords").val();
         bus.emit("go","/singer-list?search="+keywords);
     })
-    $("#reorder").on("click",function(){
-        if($(this).val()=="true"){
-            bus.emit("go","/singer-list?reorder=1");
-        }
-        
+    if($("#keywords").val() !== ""){
+        $("#cancel-search").css({display:"inline-block"});
+    }
+    
+    // //点击按钮取消搜索
+    $("#cancel-search").on("click",function(){
+        $("#cancel-search").css({display:"none"});
+        bus.emit("go","/singer-list?search="+"");
     })
+    // $("#reorder").on("click",function(){
+    //     if($(this).val()=="true"){
+    //         bus.emit("go","/singer-list?reorder=1");
+    //     }
+    // })
+    //修改数据
     $(".pos-update").on("click",function(){
         //点击的时候让req.body属性上有这个id号。然后根据这个id号去数据库查找，再渲染到页面上
         let id = $(this).parents("tr").data("id");
@@ -78,10 +88,9 @@ const addbindEvent =()=>{
         document.getElementById("addImage").src=window.URL.createObjectURL(this.files[0]);
     });
     $('.singer-add #save-form').submit(handleSaveSubmit);
-   
 }
     // 开关防止多次提交
-    let _isLoading = false
+    let _isLoading = false;
     const handleSaveSubmit = async function (e) {
         e.preventDefault()
         if ( _isLoading ) return false;

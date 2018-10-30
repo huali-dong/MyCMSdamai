@@ -4,7 +4,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#/home"> 首页</a></li>
-        <% for(var i = 0; i<data.list.length; i++) { %>
+        <% for(var i = 0; i< data.list.length; i++) { %>
             <li class="<%=  i === (data.list.length-1) ? 'active': '' %>">
                 
                 <a href="<%= data.list[i].path ? data.list[i].path : 'javascript:void(0)' %>">

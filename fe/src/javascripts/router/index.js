@@ -18,6 +18,8 @@ import movie_controller from "../controllers/movie/movie"
 
 //page-header页面控制器
 import page_header_controller from "../controllers/page-header"
+//profile页面控制器
+import profile_controller from "../controllers/profile/profile"
 var router = null
 
 // 启动路由的方法
@@ -54,6 +56,8 @@ const _init = () => {
     router.route("/movie-save",movie_controller.save)
     router.route("/movie-update",movie_controller.update)
 
+    //个人中心路由
+    router.route("/profile-list",profile_controller.list)
 
     // 404路由
     router.route('/not-found', (req, res, next) => { // 当路由切换进来的时候执行

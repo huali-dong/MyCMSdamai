@@ -43,6 +43,8 @@ const bindEvent = ()=>{
             case 203: toast("密码错误");break;
             case 201: toast("该用户不存在");break;
             default: 
+            // console.log(_data)
+                localStorage.setItem("token",_data.data);
                 window.location.href = ("/");
                 break;
             

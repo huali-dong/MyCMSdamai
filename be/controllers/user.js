@@ -1,20 +1,14 @@
 const user_model = require("../models/user");
 
-const isSignIn = (req,res,next)=>{
-    if(req.session.userinfo){
+const isSignIn = (req,res,next)=>{//因为在中间件已经判断过用户是否登录
         res.render("user",{
             code:"200",
             data:JSON.stringify("用户已登录")
         })
-    }else{
-        res.render("user",{
-            code:"201",
-            data:JSON.stringify("用户未登录")
-        })
-    }
 }
 const info =async (req,res,next)=>{
-   let _result = await user_model.getuserById(req.session.userinfo.useid);
+   let _result = await user_model.getuserById(req.token.userid);
+//    console.log(_result);
    res.render("user",{
        code:200,
        data:JSON.stringify({

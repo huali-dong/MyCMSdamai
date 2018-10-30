@@ -19,7 +19,7 @@ const add = ()=>{
                 resolve(results)
             },
             error:()=>{
-                console.log(23);
+                // console.log(23);
             }
         })
     })
@@ -44,7 +44,7 @@ const findOne = (id)=>{
         url:"api/v1/singer/findOne",
         data:id,
         success:(result)=>{
-            console.log(result)
+            // console.log(result)
             return result;
         }
     })

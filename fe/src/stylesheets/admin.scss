@@ -1,0 +1,33 @@
+
+ #span-signin{
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    background:#fff;
+    color:#000;
+    outline: none;
+    border: none;
+    width:100%;
+    cursor:pointer;
+    padding:13px 38px;
+    &:hover{
+        background:#df5799;
+        color:#fff;
+    }
+}
+#span-signup{
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    background:#fff;
+    color:#000;
+    outline: none;
+    border: none;
+    width:100%;
+    cursor:pointer;
+    padding:13px 38px;
+    &:hover{
+        background:#df5799;
+        color:#fff;
+    }
+}

@@ -1,0 +1,78 @@
+<div class="box box-info singer-update">
+        <div class="box-header with-border">
+            <h3 class="box-title">修改歌手信息</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" id="update-form"  enctype="multipart/form-data">
+                <div class="box-body">
+                        <div class="form-group">
+                            <label for="image" class="col-sm-2 control-label">明星照片</label>
+            
+                            <div class="col-sm-10">
+                                <input id="changeFile" type="file"  name="personLogo" id="personLogo">
+                                <img id="updateImage" width="80" height="80" src="http://localhost:3000{{data.personLogo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">名字</label>
+            
+                            <div class="col-sm-10">
+                                <input required type="text" value="{{data.name}}" class="form-control" name="name" id="name" placeholder="请输入要添加的名字">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday" class="col-sm-2 control-label">生日</label>
+            
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.birthday}}" name="birthday" id="birthday" placeholder="请输入生日">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="col-sm-2 control-label">出生地</label>
+            
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.city}}" name="city" id="city" placeholder="请输入出生地">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="works" class="col-sm-2 control-label">代表作品</label>
+                
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  value="{{data.works}}" name="works" id="works" placeholder="请输入代表作">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="companyName" class="col-sm-2 control-label">经济公司</label>
+            
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.companyName}}"  name="companyName" id="companyName" placeholder="请输入所属公司">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="occupation"  class="col-sm-2 control-label">毕业院校</label>
+                
+                                <div class="col-sm-10">
+                                    <input type="text"  value="{{data.occupation}}" class="form-control" name="occupation" id="occupation" placeholder="请输入毕业院校">
+                                </div>
+                         </div>
+                         <div class="form-group">
+                                <label for="salary" class="col-sm-2 control-label">是否重新发布</label>
+                
+                                <div class="col-sm-10">
+                                    <input type="checkbox" name="republish" id="republish" >
+                                </div>
+                            </div>
+                            <input type="hidden" name = "id" value="{{data._id}}">
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" id="back" class="btn btn-default">返回列表</button>
+                            <button type="submit" class="btn btn-info pull-right">提交</button>
+                            <button type="reset" class="btn btn-default pull-right" style="margin-right: 15px">重置</button>
+                        
+                    </div>
+            <!-- /.box-body -->
+           
+            <!-- /.box-footer -->
+        </form>
+    </div>

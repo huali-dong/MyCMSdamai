@@ -1,0 +1,73 @@
+<div class="box movie-list">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        <button id="addbtn" class="btn btn-block btn-success"><span class="fa fa-plus-circle"></span> 添加</button>
+      </h3>
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <input type="text" id="keywords" value="" name="pos_search" class="form-control pull-right" placeholder="搜索">
+          <div class="input-group-btn">
+            <button type="button" id="possearch" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      {{if data.items.length>0}}
+      <table class="table table-bordered movie-list__tabel">
+        <tr>
+          <th style="width: 10px">#</th>
+          <th>电影Logo</th>
+          <th>电影名称</th>
+          <th>导演</th>
+          <th>主演</th>
+          <th>上映时间</th>
+          <th>语言</th>
+          <th>类型</th>
+          <th style="width: 140px">操作</th>
+        </tr>
+        {{ each data.items }}
+        <tr data-id="{{ $value._id }}">
+          <td>{{ $index + 1 }}</td>
+          <td><img width="50" height="50" src="http://localhost:3000{{$value.movieLogo}}"
+              alt=""></td>
+          <td>{{ $value.movieName }}</td>
+          <td>{{ $value.directorName }}                                                                                                                                                                                            
+          <td>{{ $value.starName }}</td>
+          <td>{{ $value.showTime }}</td>
+          <td>{{ $value.language }}</td>
+          <td>{{ $value.movieType }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary pos-update" posid="" pageno="" keywords=""><span class="fa fa-edit"></span>
+              修改</button>
+            <button class="btn btn-sm btn-danger pos-remove" posid="" pageno="" pagecount="" pagesize="" keywords=""
+              filename=""><span class="fa fa-remove"></span> 删除</button>
+          </td>
+        </tr>
+        {{ /each }}
+      </table>
+      
+    </div>
+    <div class="box-footer clearfix">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <li><a href="#/movie-list?pageNo=<%= (data.pageInfo.pageNo > 1) ? data.pageInfo.pageNo - 1 : data.pageInfo.pageNo%>">&laquo;</a></li>
+        <% for(var i = 0; i < data.pageInfo.totalPage; i++){ %>
+          <li class="{{if data.pageInfo.pageNo == i+1}}active{{/if}}"><a href="#/movie-list?pageNo=<%= i+1 %>"><%= i+1 %></a></li>
+        <% } %>
+        <li><a href="#/movie-list?pageNo=<%= (data.pageInfo.pageNo < data.pageInfo.totalPage) ? ( ~~data.pageInfo.pageNo + 1) : data.pageInfo.totalPage  %>">&raquo;</a></li>
+      </ul>
+    </div>
+    {{ else }}
+      <div class="box box-default">
+          <div class="box-header with-border">
+            <!-- <h3 class="box-title">Blank Box</h3> -->
+          </div>
+          <div class="box-body">
+              当前没有电影信息，快去添加吧...
+          </div>
+          <!-- /.box-body -->
+        </div>
+      {{ /if }}
+  </div>
+  <!-- /.box -->

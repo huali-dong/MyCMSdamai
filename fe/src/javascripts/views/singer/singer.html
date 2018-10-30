@@ -1,0 +1,90 @@
+
+<div class="box singer-list">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        <button id="addbtn" class="btn btn-block btn-success"><span class="fa fa-plus-circle"></span> 添加</button>
+        
+      </h3>
+      {{if data.search==""}}
+      <h3 class="box-title" style="margin-left:30px">
+          <button id="reorder" class="btn btn-block btn-info" value="true" > 是否按照姓名排序</button>
+      </h3>
+      {{/if}}
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <input type="text" id="keywords" value="{{data.search}}" name="pos_search" class="form-control pull-right" placeholder="按照名字搜索歌手">
+  
+          <div class="input-group-btn">
+            <button type="button" id="possearch" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+   
+    <div class="box-body">
+        {{if data.result.length>0}}
+      <table class="table table-bordered table-hover" style="text-align: center;">
+        <tr>
+          <th style="width:10px; text-align: center">#</th>
+          <th style="text-align: center">图片</th>
+          <th style="text-align: center">名字</th>
+          <th style="text-align: center">生日</th>
+          <th style="text-align:center">国籍</th>
+          <th style="text-align:center">经纪公司</th>
+          <th style="text-align:center">代表作品</th>
+          <th style="text-align:center">毕业院校</th>
+          <th style="text-align:center">操作</th>
+        </tr>
+        {{ each data.result }}
+        <tr data-id="{{ $value._id }}">
+          <td>{{ $index + 1 }}</td>
+          <td><img width="80" height="80" src="http://localhost:3000{{$value.personLogo}}"
+              alt=""></td>
+          <td  style="display: table-cell;vertical-align: middle">{{ $value.name}}</td>
+          <td style="display: table-cell;vertical-align: middle">{{ $value.birthday}}</td>
+          <td style="display: table-cell;vertical-align: middle">{{ $value.city}}
+          </td>
+          <td style="display: table-cell;vertical-align: middle">{{ $value.companyName }}</td>
+          <td style="display: table-cell;vertical-align: middle">{{ $value.works}}</td>
+          <td style="display: table-cell;vertical-align: middle">{{ $value.occupation }}</td>
+          <td style="display: table-cell;vertical-align: middle">
+            <button class="btn btn-sm btn-primary pos-update" posid="" pageno="" keywords=""><span class="fa fa-edit"></span>
+              修改</button>
+            <button class="btn btn-sm btn-danger pos-remove" posid="" pageno="" pagecount="" pagesize="" keywords=""
+              filename=""><span class="fa fa-remove"></span> 删除</button>
+          </td>
+        </tr>
+        {{ /each }}
+      </table>
+      
+    </div>
+    <div class="box-footer clearfix">
+      <ul class="pagination pagination-sm no-margin pull-right">
+          {{set pageTotalNum = data.pageInfo.totalPage}}
+          {{set pageNum = data.pageInfo.pageNo}}
+          {{set search = data.search}}
+        <li><a href="#/singer-list?search=<%=search%>&pageNo=<%= pageNum >1 ?pageNum-1:pageNum  %>">&laquo;</a></li>
+        <% for(var i=0; i< pageTotalNum; i++ ){%>
+          <li class="{{if pageNum == i+1 }} active {{/if}}"><a href="#/singer-list?search=<%=search%>&pageNo=<%= i+1 %>"><%= i+1 %> </a></li>
+        <% } %>
+        <li><a href="#/singer-list?search=<%=search%>&pageNo=<%= pageNum < pageTotalNum? ((~~pageNum) +1): pageNum%> ">&raquo;</a></li>
+      </ul>
+    </div>
+    {{ else }}
+      <div class="box box-default">
+          <div class="box-header with-border">
+            <!-- <h3 class="box-title">Blank Box</h3> -->
+          </div>
+          <div class="box-body" id="inpuMsg">
+            {{ if data.search == ""}}
+              当前没有明星信息，快去添加吧...
+             {{else}}
+             你所查找的明星不存在,可以去加入进来
+              {{ /if}}
+          </div>
+          <!-- /.box-body -->
+        </div>
+      {{ /if }}
+  </div>
+  <!-- /.box -->

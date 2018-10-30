@@ -1,0 +1,71 @@
+<div class="box box-info movie-save">
+    <div class="box-header with-border">
+        <h3 class="box-title">添加电影信息</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" id="save-moive-form" enctype="multipart/form-data">
+        <div class="box-body">
+            <div class="form-group">
+                <label for="movieLogo" class="col-sm-2 control-label">电影Logo</label>
+
+                <div class="col-sm-10">
+                    <input  type="file" name="movieLogo" id="movieLogo" />
+                    <img id="portrait" src="" style="display:none;width: 100px;height: 100px; margin-top: 20px" />
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movieName" class="col-sm-2 control-label">电影名称</label>
+
+                <div class="col-sm-10">
+                    <input required type="text" class="form-control" name="movieName" id="movieName" placeholder="请输入电影名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="directorName" class="col-sm-2 control-label">导演</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="directorName" id="directorName" placeholder="请输入导演">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="starName" class="col-sm-2 control-label">主演</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="starName" id="starName" placeholder="请输入主演">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="showTime" class="col-sm-2 control-label">上映时间</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="showTime" id="showTime" placeholder="请输入上映时间">
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="language" class="col-sm-2 control-label">语言</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="language" id="language" placeholder="请输入语言类型">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movieType" class="col-sm-2 control-label">类型</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="movieType" id="movieType" placeholder="请输入影片类型">
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" id="back" class="btn btn-default">返回列表</button>
+            <button type="submit" class="btn btn-info pull-right">提交</button>
+            <button type="reset" class="btn btn-default pull-right" style="margin-right: 15px">重置</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>

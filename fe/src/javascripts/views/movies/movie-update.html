@@ -1,0 +1,77 @@
+<div class="box box-info movie-update">
+        <div class="box-header with-border">
+            <h3 class="box-title">添加电影信息</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" id="update-movie-form" enctype="multipart/form-data">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="movieLogo" class="col-sm-2 control-label">电影Logo</label>
+                    <div class="col-sm-10">
+                        <input type="file"  name="movieLogo" id="movieLogo" />
+                        <img id="portrait" src="http://localhost:3000{{ data.movieLogo }}" style="width: 100px;height: 100px; margin-top: 20px" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="movieName" class="col-sm-2 control-label">电影名称</label>
+    
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" name="movieName" id="movieName" value="{{ data.movieName }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="directorName" class="col-sm-2 control-label">导演</label>
+    
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="directorName" id="directorName"  value="{{ data.directorName }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="starName" class="col-sm-2 control-label">主演</label>
+    
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="starName" id="starName"  value="{{ data.starName }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="showTime" class="col-sm-2 control-label">上映时间</label>
+    
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="showTime" id="showTime"  value="{{ data.showTime }}">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="language" class="col-sm-2 control-label">语言</label>
+    
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="language" id="language"  value="{{ data.language }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="movieType" class="col-sm-2 control-label">类型</label>
+    
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="movieType" id="movieType" value="{{ data.movieType }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="salary" class="col-sm-2 control-label">是否重新发布</label>
+    
+                    <div class="col-sm-10">
+                        <input type="checkbox"    name="republish" id="republish" >
+                    </div>
+                </div>
+                <input type="hidden" name = "id" value="{{data._id}}"> 
+            </div>
+    
+            
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="button" id="back" class="btn btn-default">返回列表</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
+                <button type="reset" class="btn btn-default pull-right" style="margin-right: 15px">重置</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>

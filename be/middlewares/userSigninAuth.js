@@ -8,8 +8,17 @@ const userSigninAuth =(req,res,next)=>{
     // console.log(req.query.token);
     try {
         var decoded = jwt.verify(_token,cret);
-        req.token = decoded;
-        next();
+        let _time = (Date.now()/1000)-decoded.iat
+        let _expries = 30000;
+        if(_time > _expries){
+            res.render("user",{
+                code:403,
+                data:JSON.stringify("用户未登录,请重新登录")
+            })
+        }else{
+            req.token = decoded;
+            next();
+        }
       } catch(err) {
         // err
         res.render("user",{

@@ -1,9 +1,4 @@
 # Logs
-
-
-/fe/dev
-/fe/node_modules
-/be/node_modules
 logs
 *.log
 npm-debug.log*

@@ -86,6 +86,13 @@ const pageHeaderInfo = (url, prevUrl) => {
             list: [
                 { text: '电影预览', path: '#/movie-list'+_search },
             ]
+        },
+        '/profile-list': {
+            title: '个人管理',
+            description: '个人中心',
+            list: [
+                { text: '个人中心', path: '#/profile-list'+_search },
+            ]
         }
         
     }

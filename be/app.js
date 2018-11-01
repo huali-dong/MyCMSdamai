@@ -13,6 +13,8 @@ var singerRouter = require("./routes/singer");
 var movieRouter = require("./routes/movie");
 var adminRouter = require("./routes/admin");
 var userRouter = require("./routes/user");
+var profileRouter = require("./routes/profile");
+
 
 // 应用程序
 var app = express();
@@ -42,13 +44,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 启用路由工具
 app.use('/api/'+ version +'/position', positionRouter);
-app.use("/api/"+version+"/singer",singerRouter);
+app.use("/api/"+version+ "/singer",singerRouter);
 app.use('/api/'+ version +'/movie', movieRouter);
 
 app.use('/api/'+ version +'/admin', adminRouter);
 
 app.use('/api/'+ version +'/user',userRouter);
 
+app.use('/api/'+ version +'/profile',profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

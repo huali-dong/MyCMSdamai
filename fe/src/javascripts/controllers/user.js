@@ -2,13 +2,12 @@ import user_model from '../models/user'
 const renderUserInfo = async () => {
     // 获取用户信息，再去渲染
     let _result = await user_model.info();
-    // console.log(_result);
     if ( _result.status === 304 ) { // 用户没有登录信息
         alert('请重新登录')
         window.location.href = '/admin.html'
     } else {
-        // console.log(_result.data)
-        $('.nickname').html(_result.data.nickname)
+        $('.nickname').html(_result.data.nickname);
+        $(".userimg").attr({src:"http://localhost:3000"+_result.data.personLogo});
     }    
     $('.exit-btn').click( async function () {
         localStorage.removeItem("token");

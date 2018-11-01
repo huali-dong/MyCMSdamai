@@ -18,7 +18,6 @@ const info = () => {
             token:localStorage.getItem("token")
         },
         success: (results)=>{
-            console.log(results);
             return results;
         }
     })

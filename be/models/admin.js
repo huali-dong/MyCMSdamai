@@ -5,7 +5,8 @@ var UserModel = mongoose.model("users",new mongoose.Schema({
     username :String,
     password :String,
     nickname :String,
-    signupTime :String
+    signupTime :String,
+    personLogo :String
 }));
 
 
@@ -19,9 +20,11 @@ const signup = ({username,password,nickname})=>{
     let crypted = cipher.update(password, 'utf-8', 'hex');
     crypted += cipher.final('hex');
     // console.log(crypted)
+    let personLogo = "/uploads/user/b.jpg";
     return new UserModel({
         username,
         nickname,
+        personLogo,
         password:crypted,
         signupTime:Date.now()
     }).save()

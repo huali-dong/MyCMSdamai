@@ -19,10 +19,10 @@ const signup = async (req,res,next)=>{
 const signin = async (req,res,next)=>{
     //登录模块,也应该先判断有没有该用户
     let _isExit = await admin_module.judgeUser(req.body.username);
-    console.log(_isExit);
-    if(!!_isExit){//，再判断密码与数据库的密码是否一样
+    console.log(!!_isExit,_isExit)
+    if(_isExit.length>0){//，再判断密码与数据库的密码是否一样
         let _result = await admin_module.signin((req.body.password),_isExit[0]);
-        console.log(_result);
+
         if(_result){
             // 登录成功后，保存session,使用的是一个中间件1. 用来验证 2. 存储一些用户信息做其他判断
             // req.session.userinfo = {
@@ -37,13 +37,13 @@ const signin = async (req,res,next)=>{
             }
             let _cret  = "i am dhl";
             let _token = jwt.sign(_payload,_cret);
-            console.log(_token)
             res.render("admin",{code:200,data:JSON.stringify(_token)});
         }else{
-            res.render("amdin",{code:203,data:JSON.stringify("密码错误")});
+            res.render("admin",{code:203,data:JSON.stringify("密码错误")});
         }
     }else{//如果没有改用户
-        res.render("admin",{code:"202",data:JSON.stringify("用户名不存在")});
+        console.log(333333);
+        res.render("admin",{code:202,data:JSON.stringify("用户名不存在")});
     }
 }
 module.exports = {

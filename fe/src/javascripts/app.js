@@ -13,12 +13,10 @@ $('#wrapper').html(body_template)
 //登录验证
 let init = async () => {
     let isSignIn = await userSigninAuth();
-    console.log(isSignIn);
     if ( isSignIn ) {
         router.init()
         user_controller.renderUserInfo();       
     }else {//如果没有登录就跳转
-        console.log(2);
         window.location.href="/admin.html"
     }
 }

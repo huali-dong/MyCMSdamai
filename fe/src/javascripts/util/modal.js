@@ -1,30 +1,28 @@
 
 // 根据返回数据做出操作
-const modal = ( data, options = {} ) => {
-    let _none = () => {}
+const modal = ( data,options = {} ) => {
+    let _none = ()=>{};
     let { isReact, success, fail ,callback,cb} = {
         isReact: ((typeof options.isReact) !== 'undefined') ? options.isReact : true,
-        success: options.success || _none,
-        fail: options.fail || _none,
+        success: options.success || "操作成功",
+        fail: options.fail ||"操作失败",
         callback :options.callback || _none,
         cb :options.cb || _none
     }
     if ( data.status == 200 ) {
         if (isReact)  zeroModal.success({
-            content:"操作成功",
+            content : success,
             ok:true,
-            onClosed:cb,
-            okFn:callback
+            onClosed:cb,//关闭按钮回调
+            okFn:callback//确认按钮回调
         });
-        if ( success ) success(data.data);
     } else {
-        if (isReact)  zeroModal.success({
-            content:"操作失败",
+        if (isReact)  zeroModal.error({
+            content: fail,
             ok:true,
             onClosed:cb,
             okFn:callback
         });;
-        if ( fail ) fail(data.data);
     }
 }
 

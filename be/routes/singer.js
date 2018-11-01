@@ -2,7 +2,7 @@
 var express = require("express");
 var router = express.Router();
 var singer_controller = require("../controllers/singer");
-var fileUpload = require('../middlewares/singer')
+var fileUpload = require('../middlewares/singerUpload')
 // var fileUpload = require('../middlewares/fileUpload')
 const setresponseHeader  = (req,res,next)=>{
     res.set("content-type","application/json;charset = utf-8");
